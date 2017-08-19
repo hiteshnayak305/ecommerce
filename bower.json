@@ -1,0 +1,17 @@
+{
+  "name": "ecommerce",
+  "description": "An ecommerce website",
+  "main": "index.js",
+  "authors": [
+    "Hitesh Nayak <hiteshnayak305@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
