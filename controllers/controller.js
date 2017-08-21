@@ -1,4 +1,4 @@
-var BookInstance = require('../models/bookinstance');  //instance of model to be used
+var BookInstance = require('../models/bookinstance'); //instance of model to be used
 
 // Display list of all BookInstances
 exports.bookinstance_list = function(req, res) {

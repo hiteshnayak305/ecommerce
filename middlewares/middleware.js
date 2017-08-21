@@ -1,7 +1,7 @@
 module.exports = {
-    formHandler: function(req, res, next){
-      //col-md-offset-0
-      next();
+    formHandler: function(req, res, next) {
+        //col-md-offset-0
+        next();
     }
 }
 
@@ -10,10 +10,10 @@ module.exports = {
 var middleware = require('../middlewares/middleware');
 
 /* GET home page. */
-router.get('/',[middleware['formHandler'],function(req, res, next) {
-  res.render('index', { title: 'Express' });
-}
-]
- );
+router.get('/', [middleware['formHandler'], function(req, res, next) {
+    res.render('index', {
+        title: 'Express'
+    });
+}]);
 
 module.exports = router;
