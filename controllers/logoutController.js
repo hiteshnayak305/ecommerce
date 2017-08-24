@@ -1,4 +1,6 @@
 module.exports = function(req, res, next) {
-    req.logout();
-    res.redirect('/');
+    //req.logOut();   //Not working
+    if (req.session.destroy()) { //true: if destroyed
+        res.redirect('/');
+    }
 }

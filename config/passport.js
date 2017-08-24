@@ -1,13 +1,7 @@
 var LocalStrategy = require('passport-local').Strategy;
-
 var User = require('../models/User');
-
 var bcrypt = require('bcrypt-nodejs');
-
-//var configAuth = require('./auth.js');
-//var constant = require('../config/constants');
-//var dateFormat = require('dateformat');
-//var fs = require('fs');
+var dateFormat = require('dateformat');
 
 //expose this function to our app using module.exports
 module.exports = function(passport) {
@@ -38,7 +32,7 @@ module.exports = function(passport) {
 
     passport.use('local-signup', new LocalStrategy({
             // by default, local strategy uses Username and password, we will override with email
-            UsernameField: 'email',
+            usernameField: 'email',
             passwordField: 'password',
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
@@ -62,7 +56,7 @@ module.exports = function(passport) {
                         return done(null, false, req.flash('error', 'That email is already taken.'));
                     } else {
                         User.find().sort([
-                            ['_id', 'descending']
+                            ['local._id', 'descending']
                         ]).limit(1).exec(function(err, Userdata) {
 
                             // if there is no User with that email
@@ -71,20 +65,20 @@ module.exports = function(passport) {
 
                             // set the User's local credentials
 
-                            //var day = dateFormat(Date.now(), "yyyy-mm-dd HH:MM:ss");
+                            var date = dateFormat(Date.now(), "yyyy-mm-dd HH:MM:ss");
 
                             var active_code = bcrypt.hashSync(Math.floor((Math.random() * 99999999) * 54), null, null);
 
-
                             newUser.local.email = email;
                             newUser.local.password = newUser.generateHash(password);
-                            newUser.local.name = req.body.username;
-                            //newUser.created_date = day;
-                            //newUser.updated_date = day;
+                            newUser.local.username = req.body.username;
+                            newUser.created_date = date;
+                            newUser.updated_date = date;
                             newUser.local.status = 'active'; //inactive for email actiavators
                             newUser.local.active_hash = active_code;
-                            //newUser._id = Userdata[0]._id + 1;
-
+                            if (Userdata[0]) {
+                                newUser.local._id = Userdata[0].local._id + 1;
+                            }
 
                             // save the User
                             newUser.save(function(err) {
@@ -118,8 +112,8 @@ module.exports = function(passport) {
 
     passport.use('local-login', new LocalStrategy({
             // by default, local strategy uses Username and password, we will override with email
-            //UsernameField: 'email',
-            //passwordField: 'password',
+            usernameField: 'email',
+            passwordField: 'password',
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
         function(req, email, password, done) { // callback with email and password from our form

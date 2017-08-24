@@ -11,17 +11,13 @@ var userSchema = mongoose.Schema({
             type: Number,
             default: 1
         },
-        name: String,
+        username: String,
         email: String,
         password: String,
         status: String,
         created_date: Date,
         updated_date: Date,
         active_hash: String,
-        role_id: {
-            type: Number,
-            default: 2
-        }
     },
     facebook: {
         id: String,
