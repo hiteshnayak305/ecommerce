@@ -7,7 +7,8 @@ var logoutController = require('../controllers/logoutController');
 router.get('/', logoutController);
 
 router.post('/', function(req, res, next) {
-    console.log('POST recieved from ' + req.data);
+    console.log('POST recieved @ logout ');
+    res.redirect('/logout');
 });
 
 module.exports = router;

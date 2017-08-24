@@ -16,7 +16,7 @@ var config = require('./config/config');
 
 var app = express();
 
-mongoose.connect('config.development.database.connection.url');
+mongoose.connect(config.development.database.connection.url);
 
 require('./config/passport')(passport);
 
@@ -26,7 +26,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 //app.use(morgan('dev')); //log every request
 app.use(bodyParser.json());

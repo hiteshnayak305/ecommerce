@@ -8,7 +8,8 @@ var isLoggedIn = require('../middlewares/isLoggedIn');
 router.get('/', isLoggedIn, dashboardController);
 
 router.post('/', function(req, res, next) {
-    console.log('POST recieved from ' + req.data);
+    console.log('POST recieved @ dashboard');
+    res.redirect('/dashboard');
 });
 
 module.exports = router;

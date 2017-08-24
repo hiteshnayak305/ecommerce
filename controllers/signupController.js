@@ -1,5 +1,9 @@
 module.exports = function(req, res, next) {
-    res.render('signup', {
-        title: 'Signup'
-    });
+    if (req.session.user) {
+        res.redirect('/dashboard');
+    } else {
+        res.render('signup', {
+            title: 'Signup'
+        });
+    }
 }
