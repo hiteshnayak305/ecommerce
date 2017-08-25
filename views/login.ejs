@@ -3,15 +3,19 @@
     <h1>Helo</h1>
     <p>Welcome to
         <%= title %>
-            <form action="/login" method="post">
-                <div class="form-group">
-                    <input type="text" class="form-control" id="" placeholder="email" name="email">
-                    <p class="help-block">Help text here.</p>
-                </div>
-                <div class="form-group">
-                    <input type="password" class="form-control" id="" placeholder="pass" name="password">
-                    <p class="help-block">Help text here.</p>
-                </div>
-                <button type="submit" name="submit"></button>
-            </form>
+            error:
+            <%= error %>
+                success:
+                <%= success %>
+                    <form action="/login" method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="" placeholder="email" name="email">
+                            <p class="help-block">Help text here.</p>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="" placeholder="pass" name="password">
+                            <p class="help-block">Help text here.</p>
+                        </div>
+                        <button type="submit" name="submit"></button>
+                    </form>
     </p>

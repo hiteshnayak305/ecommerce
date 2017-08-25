@@ -4,6 +4,7 @@ var router = express.Router();
 var dashboardController = require('../controllers/dashboardController');
 var isLoggedIn = require('../middlewares/isLoggedIn');
 
+console.log('in dashboard.js');
 /* GET dashbboard page. */
 router.get('/', isLoggedIn, dashboardController);
 

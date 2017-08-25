@@ -4,6 +4,7 @@ var passport = require('passport');
 
 var loginController = require('../controllers/loginController');
 
+console.log('in login.js');
 /* GET login page. */
 router.get('/', loginController);
 

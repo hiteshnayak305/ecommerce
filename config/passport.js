@@ -5,6 +5,7 @@ var dateFormat = require('dateformat');
 
 //expose this function to our app using module.exports
 module.exports = function(passport) {
+    console.log('in passport.js');
 
     // =========================================================================
     // passport session setup ==================================================
@@ -37,6 +38,7 @@ module.exports = function(passport) {
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
         function(req, email, password, done) {
+            console.log('in local-signup');
             // asynchronous
             // User.findOne wont fire unless data is sent back
             process.nextTick(function() {
@@ -74,7 +76,7 @@ module.exports = function(passport) {
                             newUser.local.username = req.body.username;
                             newUser.created_date = date;
                             newUser.updated_date = date;
-                            newUser.local.status = 'active'; //inactive for email actiavators
+                            newUser.local.status = 'inactive'; //inactive for email actiavators
                             newUser.local.active_hash = active_code;
                             if (Userdata[0]) {
                                 newUser.local._id = Userdata[0].local._id + 1;
@@ -85,12 +87,10 @@ module.exports = function(passport) {
                                 if (err) {
                                     throw err;
                                 }
-
-                                /*  var email            = require('../lib/email.js');
-                                  email.activate_email(req.body.Username,req.body.email,active_code);
-                                                      return done(null, newUser,req.flash('success', 'Account Created Successfully,Please Check Your Email For Account Confirmation.'));
-                                  */
-                                return done(null, newUser, req.flash('success', 'Account Created Successfully'));
+                                //email validation
+                                var email = require('../helpers/email/activate_email');
+                                email.activate_email(req.body.username, req.body.email, active_code);
+                                return done(null, newUser, req.flash('success', 'Account Created Successfully,Please Check Your Email For Account Confirmation.'));
                             });
 
                         });
@@ -116,7 +116,9 @@ module.exports = function(passport) {
             passwordField: 'password',
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
-        function(req, email, password, done) { // callback with email and password from our form
+        function(req, email, password, done) {
+            console.log('in local-login');
+            // callback with email and password from our form
             // find a User whose email is the same as the forms email
             // we are checking to see if the User trying to login already exists
             User.findOne({

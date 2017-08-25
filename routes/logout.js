@@ -3,6 +3,7 @@ var router = express.Router();
 
 var logoutController = require('../controllers/logoutController');
 
+console.log('in logout.js');
 /* GET login page. */
 router.get('/', logoutController);
 

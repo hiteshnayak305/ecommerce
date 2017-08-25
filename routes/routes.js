@@ -3,14 +3,17 @@ var login = require('./login');
 var signup = require('./signup');
 var dashboard = require('./dashboard');
 var logout = require('./logout');
+var confirm = require('./confirm');
 
 module.exports = function(app, passport) {
 
+    console.log('in routes.js');
     app.use('/', index);
     app.use('/login', login);
     app.use('/signup', signup);
     app.use('/dashboard', dashboard);
     app.use('/logout', logout);
+    app.use('/confirm', confirm);
 
     // catch 404 and forward to error handler
     app.use(function(req, res, next) {

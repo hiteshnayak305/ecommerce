@@ -7,14 +7,18 @@ var config = {
     // ### Development **(default)**
     development: {
         // The url to use when providing links to the site, E.g. in RSS and email.
-        url: 'http://example.com',
+        url: 'http://localhost:3000/',
         mail: {
-            transport: 'SMTP or whatever',
+            type: 'SMTP',
+            smtp_host: '',
+            smtp_port: '',
             options: {
-                service: 'Sendgrid or whatever',
+                from: 'Me',
+                from_mail: 'me@gmail.com',
+                service: 'Gmail',
                 auth: {
-                    user: 'user',
-                    pass: 'password'
+                    user: 'me@gmail.com',
+                    pass: 'mypassword'
                 }
             }
         },

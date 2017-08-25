@@ -1,6 +1,9 @@
 module.exports = function(req, res, next) {
+    console.log('in dashboardController.js');
     res.render('dashboard', {
         title: 'Dashboard',
-        email: req.session.user.local.email,
+        error: req.flash("error"),
+        success: req.flash("success"),
+        email: req.session.user.local.email
     });
 }
