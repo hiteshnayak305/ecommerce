@@ -12,6 +12,7 @@ module.exports = function isRegistered(req, res, next) {
         } else {
             // if they aren't redirect them to the home page
             console.log('user not registered');
+            req.flash('error', 'User not registered');
             res.redirect('/signup');
         }
     })

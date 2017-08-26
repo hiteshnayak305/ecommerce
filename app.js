@@ -16,7 +16,9 @@ var config = require('./config/config');
 
 var app = express();
 
-mongoose.connect(config.development.database.connection.url);
+mongoose.connect(config.development.database.connection.url, {
+    useMongoClient: true
+});
 
 require('./config/passport')(passport);
 
