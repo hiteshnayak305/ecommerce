@@ -13,9 +13,9 @@ npm update
 
 ### frameworks
 
-Express js
-passport js (authentication)
-bootstrap (frontend)
-mongodb (document oriented database)
-mongoose (database package)
+Express js,
+passport js (authentication),
+bootstrap (frontend),
+mongodb (document oriented database),
+mongoose (database package),
 nodemailer (email)
