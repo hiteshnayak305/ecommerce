@@ -8,6 +8,12 @@ var confirm = require('./confirm');
 module.exports = function(app, passport) {
 
     console.log('in routes.js');
+
+    app.use(function(req,res,next){
+        res.locals.user = req.session.user;
+        next();
+    });
+
     app.use('/', index);
     app.use('/login', login);
     app.use('/signup', signup);

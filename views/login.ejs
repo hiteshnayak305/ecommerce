@@ -1,21 +1,37 @@
 <% layout('layouts/master') -%>
 
-    <h1>Helo</h1>
-    <p>Welcome to
-        <%= title %>
-            error:
-            <%= error %>
-                success:
-                <%= success %>
-                    <form action="/login" method="post">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="" placeholder="email" name="email">
-                            <p class="help-block">Help text here.</p>
+<main>
+    <div class="container">
+        <div class="row">
+            <% if (error != '') { %>
+                <div class="col-md-8 col-md-offset-2 col-sm-12 alert_box">
+                <div class="alert alert-danger" role="alert">
+                <strong> <%= error %> </strong>
+                </div>
+                </div>
+                <% } %>
+                <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 login_form">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">LOGIN</h3>
                         </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="" placeholder="pass" name="password">
-                            <p class="help-block">Help text here.</p>
+                        <div class="panel-body">
+                            <p class="text-warning">Login to make a purchase</p>
+                            <form action="/login" method="post">
+                                <div class="form-group ">
+                                    <input type="email" class="form-control" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="form-group ">
+                                    <input type="password" class="form-control" name="password" placeholder="Password" required>
+                                </div>
+                                <button type="submit" name="button" class="btn btn-primary">Login</button>
+                            </form>
                         </div>
-                        <button type="submit" name="submit"></button>
-                    </form>
-    </p>
+                        <div class="panel-footer">
+                            <p class="text-info">Don't have an account? <a href="/signup"><b class="text-primary">Register</b></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>

@@ -1,1 +1,1 @@
-body{padding:50px;font:14px "Lucida Grande",Helvetica,Arial,sans-serif}a{color:#00b7ff}
+body{margin-top:50px}#banner{background:url(../images/banner.jpg) no-repeat center;background-size:cover;text-align:center;color:#f8f8f8}#banner_content{margin-top:20%;margin-bottom:20%;background-color:rgba(0,0,0,.7);border-radius:6px}.alert_box{margin-top:5px}.signup_form{margin-top:5%;margin-bottom:8%}.login_form{margin-top:8%;margin-bottom:8%}footer{padding:10px 0;width:100%;background-color:#101010;color:#9d9d9d}
